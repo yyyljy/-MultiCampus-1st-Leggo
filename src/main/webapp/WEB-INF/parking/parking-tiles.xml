@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	<definition name="parkingTemplate" template="/WEB-INF/layout/parkingMainLayout.jsp">
+		<put-attribute name="top" value="/WEB-INF/include/top.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/parking/parking_menu.jsp" />
+		<put-attribute name="content" value="/WEB-INF/parking/parking_map.jsp" />
+	</definition>
+	
+	<definition name="parking" extends="parkingTemplate"></definition>
+	
+	<definition name="parking_findRoad" extends="parkingTemplate">
+		<put-attribute name="content" value="/WEB-INF/parking/parking_findRoad.jsp" />
+	
+	</definition>
+	
+		<definition name="parking/favorite" extends="parkingTemplate">
+		<put-attribute name="content" value="/WEB-INF/navi/naviFavorite.jsp" />
+	</definition>
+	
+	<definition name="parking/recent" extends="parkingTemplate">
+		<put-attribute name="content" value="/WEB-INF/navi/naviRecent.jsp" />
+	</definition>
+	
+</tiles-definitions>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	<definition name="naviTemplate" template="/WEB-INF/layout/naviMainLayout.jsp">
+		<put-attribute name="top" value="/WEB-INF/include/top.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/navi/navi_menu2.jsp" />
+		<put-attribute name="content" value="/WEB-INF/navi/navi_map.jsp" />
+	</definition>
+	
+	<definition name="navi" extends="naviTemplate"></definition>
+	
+	<definition name="roadmap" extends="naviTemplate">
+		<put-attribute name="menu" value="/WEB-INF/navi/roadmap_menu.jsp" />
+	</definition>
+	
+	<definition name="navi_findRoad" extends="naviTemplate">
+		<put-attribute name="content" value="/WEB-INF/navi/navi_findRoad.jsp" />
+	</definition>
+		
+	<definition name="start" extends="naviTemplate">
+		<put-attribute name="menu" value="/WEB-INF/navi/navi_menu.jsp" />
+	</definition>
+	
+	<definition name="navi/favorite" extends="naviTemplate">
+		<put-attribute name="content" value="/WEB-INF/parking/parkingFavorite.jsp" />
+	</definition>
+	
+	<definition name="navi/recent" extends="naviTemplate">
+		<put-attribute name="content" value="/WEB-INF/parking/parkingRecent.jsp" />
+	</definition>
+
+</tiles-definitions>

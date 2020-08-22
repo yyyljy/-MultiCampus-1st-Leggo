@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	<definition name="createmap" template="/WEB-INF/reference_map/create_map.jsp">
+		<put-attribute name="content" value="/WEB-INF/content.jsp" />
+	</definition>
+	<definition name="maptypechange" template="/WEB-INF/reference_map/map_type_change.jsp">
+		<put-attribute name="content" value="/WEB-INF/content.jsp" />
+	</definition>
+	<definition name="markonclick" template="/WEB-INF/reference_map/mark_onclick.jsp">
+		<put-attribute name="content" value="/WEB-INF/content.jsp" />
+	</definition>
+	<definition name="multiplemarker" template="/WEB-INF/reference_map/multiple_marker_control.jsp">
+		<put-attribute name="content" value="/WEB-INF/content.jsp" />
+	</definition>
+	<definition name="placesearchbykeyword" template="/WEB-INF/reference_map/placesearchbykeyword1.jsp">
+		<put-attribute name="content" value="/WEB-INF/content.jsp" />
+	</definition>
+	<definition name="searchplacebykeyword" template="/WEB-INF/reference_map/searchplacebykeyword.jsp">
+		<put-attribute name="content" value="/WEB-INF/content.jsp" />
+	</definition>
+	<definition name="searchroad_and_createmarker" template="/WEB-INF/reference_map/searchroad_and_createmarker.jsp">
+		<put-attribute name="content" value="/WEB-INF/content.jsp" />
+	</definition>
+	<definition name="usercontrolonthemap" template="/WEB-INF/reference_map/usercontrol_onthemap.jsp">
+		<put-attribute name="content" value="/WEB-INF/content.jsp" />
+	</definition>
+	
+	
+	
+	
+	
+</tiles-definitions>

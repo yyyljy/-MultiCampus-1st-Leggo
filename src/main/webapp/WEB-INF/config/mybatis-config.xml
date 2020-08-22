@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+  
+  
+ <!-- VO path와 SQL mapper명시 -->
+<configuration>
+   <typeAliases>
+      <typeAlias type="com.iot.member.memberVO" alias="member"/>
+                        <!-- mapper에 resultType="parking"와 일치해야 함 -->
+      <typeAlias type="com.iot.parking.parkingVO" alias="parking"/>
+      <typeAlias type="com.iot.reservation.resvVO" alias="resvVO"/>
+      <typeAlias type="com.iot.freeboard.freeboardVO" alias="freeboard"/>
+      <typeAlias type="com.iot.noticeboard.noticeboardVO" alias="noticeboard"/>
+      <typeAlias type="com.iot.comment.cmtVO" alias="comment"/>
+      <typeAlias type="com.iot.reservation.resvTableVO" alias="resvTableVO"/>
+      <typeAlias type="com.iot.point.pointVO" alias="pointVO"/>
+      <typeAlias alias="favoriteVO" type="com.iot.lastmile.FavoriteVO"/>
+      <typeAlias alias="recentVO" type="com.iot.lastmile.RecentVO"/>
+      <typeAlias alias="payVO" type="com.iot.pay.payVO"/>
+      <typeAlias alias="parkingInfoVO" type="com.iot.parkingAPI.parkingInfoVO"/>
+   </typeAliases>
+   
+   
+   <mappers>
+      <mapper resource="mapper/member.xml"/>
+      <mapper resource="mapper/parking.xml"/>
+      <mapper resource="mapper/reservation.xml"/>
+      <mapper resource="mapper/freeboard.xml"/>
+      <mapper resource="mapper/noticeboard.xml"/>
+      <mapper resource="mapper/comment.xml"/>
+      <mapper resource="mapper/point.xml"/>
+      <mapper resource="mapper/lastmile.xml"/>  
+      <mapper resource="mapper/pay.xml"/>
+      <mapper resource="mapper/parkingAPI.xml"/>
+   </mappers>
+</configuration>

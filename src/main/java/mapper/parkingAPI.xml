@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.iot.parkingAPI">
+  
+  <!-- 예약을 하는것으로 간주 하고 업데이트 -->
+  	<update id="update" parameterType="String">
+  		update parking_seats set
+			capacity = capacity-1,
+			cur_parking= cur_parking+1
+		where parking_code = #{parking_code}
+  	</update>
+  	<select id="pNameAddr" parameterType="String" resultType="parkingInfoVO">
+		select parking_code, parking_name, addr
+		from parking_loc
+		where parking_code = #{parking_code}
+	</select>
+  </mapper>

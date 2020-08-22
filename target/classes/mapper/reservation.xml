@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.iot.reservation">
+  	<!-- 예약내역 추가 -->
+  	<insert id="resvInsert" parameterType="resvVO">
+  		insert into reservation values(
+	  		#{rv_id},
+			#{user_id},
+			#{parking_code},
+			#{rv_price},
+			#{license_plate},
+			#{rv_code},
+			sysdate,
+			#{rv_time}
+		)
+  	</insert>
+  	
+  	<!-- 예약내역 삭제 -->
+  	<delete id="resvDelete" parameterType="resvVO">
+  		delete reservation
+  		where rv_id = #{rv_id}
+  	</delete>
+  	
+  	<!-- 예약내역 수정 -->
+  	<update id="resvUpdate" parameterType="resvVO">
+  		update reservation set
+			rv_price = #{rv_price},
+			license_plate = #{license_plate},
+			rv_code = #{rv_code},
+			rv_time = #{rv_time}
+		where rv_id = #{rv_id}
+  	</update>
+  	
+  	<!-- 예약내역 전체 조회 -->
+  	<select id="resvSelect" resultType="resvVO" parameterType="String">
+  		select * 
+  		from reservation 
+  		where user_id = #{user_id}
+  	</select>
+  </mapper>

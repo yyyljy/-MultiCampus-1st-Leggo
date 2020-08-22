@@ -1,0 +1,6 @@
+
+  
+ 시퀸스
+ create sequence quesboard_seq;
+  
+  

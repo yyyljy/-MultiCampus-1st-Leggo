@@ -1,0 +1,26 @@
+create table reservation
+(
+rv_id varchar2 (10) primary key,
+user_id varchar2 (20) references member (user_id),
+parking_code varchar2 (7) references parking_lots (parking_code),
+rv_price number (10) ,
+license_plate varchar2 (15) ,
+rv_code number (7) not null,
+rv_date date not null,
+rv_time date not null
+);
+commit;
+
+create sequence rv_id_seq;
+
+insert into reservation values(
+'999999999',
+'test1',
+'1010089',
+1000,
+'서울 15 가 9921',
+'0000000',
+sysdate,
+sysdate
+);
+commit;

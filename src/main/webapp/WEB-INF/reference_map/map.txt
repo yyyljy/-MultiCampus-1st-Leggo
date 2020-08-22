@@ -1,0 +1,9 @@
+//실행할 때
+http://localhost:8088/leggo/createmap.do
+http://localhost:8088/leggo/maptypechange.do
+http://localhost:8088/leggo/markonclick.do
+http://localhost:8088/leggo/multiplemarker.do
+http://localhost:8088/leggo/placesearchbykeyword.do
+http://localhost:8088/leggo/searchplacebykeyword.do
+http://localhost:8088/leggo/searchroad_and_createmarker.do
+http://localhost:8088/leggo/usercontrolonthemap.do

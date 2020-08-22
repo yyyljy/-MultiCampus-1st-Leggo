@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.iot.freeboard">
+  	  	<!-- 목록이나 글을 볼 때 돌려받는 resultType이 필요하고
+  		 목록이나 글을 등록할 때 sql조건문의 타입을 결정하는 parameterType을 쓴다.-->
+  	<!-- 자유게시판 목록 보기 -->
+  	<select id="listall" resultType="freeboard">
+  		select * from freeboard
+  		order by brd_num desc
+  	</select>
+  	
+  	<!-- 자유게시판 글등록 -->
+  	<select id="write" parameterType="freeboard">
+  		insert into freeboard values(
+  		2,
+  		freeboard_seq.nextval,
+  		#{title},
+  		#{content},
+  		sysdate,
+  		#{user_id},
+  		'http')
+  	</select>
+  	
+  	<!-- 자유게시판 글보기 -->
+  					  <!--spl조건문의 타입을 결정--> <!--돌려받는 타입을  결정-->
+  	<select  id="read" parameterType="String" resultType="freeboard">
+  		select * from freeboard
+  		where brd_num = #{brd_num}
+  	</select>
+  	
+  	<delete id="delete" parameterType="String">
+  		delete from freeboard
+  		where brd_num = #{brd_num}
+  	</delete>
+  	
+  	
+<!--   	create table freeboard(
+  brd_type_num number(3) references type (brd_type_num),
+  brd_num varchar2(10) primary key,
+  title varchar2(60) not null,
+  content varchar2(1000) not null,
+  update_date date,
+  user_id varchar2(20) not null,
+  img_path varchar2(60)
+  ); -->
+  	
+  	<!-- 
+  	회원 가입
+  	<insert id="signUp" parameterType="member">
+  		insert into member values(
+  		#{user_id},
+		#{pass},
+		#{pass_hint},
+		#{pass_ans},
+		#{user_name},
+		#{birth},
+		#{gender},
+		#{tel},
+		#{mobile},
+		#{addr},
+		#{postcode},
+		#{email},
+		#{recv_email},
+		#{recv_text},
+		sysdate,
+		sysdate)
+  	</insert>
+  	
+  	회원정보 조회
+  	<select id="login" resultType="member" parameterType="member">
+  		select m.*
+  		from member m
+  		where user_id = #{user_id} and pass = #{pass}
+  	</select>
+  	
+  	탈퇴
+  	<delete id="withdrawal" parameterType="member">
+  		delete member
+  		where user_id = #{user_id}
+  	</delete>
+  	
+  	회원정보 수정
+  	<update id="modifyMyInfo" parameterType="member">
+  		update member set
+		pass_hint = #{pass_hint},
+		pass_ans = #{pass_ans},
+		tel = #{tel},
+		mobile = #{mobile},
+		addr = #{addr},
+		postcode = #{postcode},
+		email = #{email},
+		recv_email = #{recv_email},
+		recv_text = #{recv_text}
+  		where user_id = #{user_id}
+  	</update> 
+  	-->
+  
+  </mapper>

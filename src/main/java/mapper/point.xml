@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.iot.point">
+  	<!-- 포인트 내역 삽입 -->
+  	<insert id="insert" parameterType="pointVO">
+  		insert into userPoint values(
+  		#{user_id},
+		#{pointAvail},
+		#{pointChange},
+		sysdate,
+		sysdate+90,
+		#{userGrade}
+		)
+  	</insert>
+  	
+  	<!-- 포인트 내역 전체 삭제 -->
+  	<delete id="deleteAll" parameterType="pointVO">
+  		delete userPoint
+  		where user_id = #{user_id}
+  	</delete>
+  	
+  	<!-- 포인트 내역 수정 -->
+  	<update id="update" parameterType="pointVO">
+  		update userPoint set
+		pointAvail = #{pointAvail},
+		pointChange = #{pointChange},
+		sysdate,
+		pointExpDate = #{pointExpDate},
+		userGrade = #{userGrade}
+		where user_id = #{user_id}
+  	</update>
+  	
+  	<!-- 특정 회원 포인트 내역 전체 조회-->
+  	<select id="selectAll" parameterType="String" resultType="pointVO">
+  		select * from userPoint where user_id = #{user_id} order by pointdate
+  	</select>
+  	
+  	<!-- 특정 회원 현재 포인트 조회 -->
+  	<select id="selectPoint" parameterType="String" resultType="pointVO">
+  		select P.* 
+  		from (
+  			select *
+  			from userPoint
+  			where user_id = #{user_id}
+  			order by pointdate desc
+  			) P
+  		where rownum = 1
+  	</select>
+  </mapper>

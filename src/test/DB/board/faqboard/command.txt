@@ -1,0 +1,5 @@
+
+ 시퀸스
+ create sequence faqboard_seq;
+  
+  

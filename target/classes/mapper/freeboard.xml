@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.iot.freeboard">
+  	<select id="listall" resultType="freeboard">
+  		select *from freeboard
+  	</select>
+  	
+  	<!-- 
+  	회원 가입
+  	<insert id="signUp" parameterType="member">
+  		insert into member values(
+  		#{user_id},
+		#{pass},
+		#{pass_hint},
+		#{pass_ans},
+		#{user_name},
+		#{birth},
+		#{gender},
+		#{tel},
+		#{mobile},
+		#{addr},
+		#{postcode},
+		#{email},
+		#{recv_email},
+		#{recv_text},
+		sysdate,
+		sysdate)
+  	</insert>
+  	
+  	회원정보 조회
+  	<select id="login" resultType="member" parameterType="member">
+  		select m.*
+  		from member m
+  		where user_id = #{user_id} and pass = #{pass}
+  	</select>
+  	
+  	탈퇴
+  	<delete id="withdrawal" parameterType="member">
+  		delete member
+  		where user_id = #{user_id}
+  	</delete>
+  	
+  	회원정보 수정
+  	<update id="modifyMyInfo" parameterType="member">
+  		update member set
+		pass_hint = #{pass_hint},
+		pass_ans = #{pass_ans},
+		tel = #{tel},
+		mobile = #{mobile},
+		addr = #{addr},
+		postcode = #{postcode},
+		email = #{email},
+		recv_email = #{recv_email},
+		recv_text = #{recv_text}
+  		where user_id = #{user_id}
+  	</update> 
+  	-->
+  
+  </mapper>

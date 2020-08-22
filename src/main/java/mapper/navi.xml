@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.iot.navi">
+  	<select id="favorite" resultType="FavoriteVO" parameterType="String">
+  		select * from favorite where user_id=#{user_id} and favorite_code='parking'
+  	</select>
+  	
+  	<select id="recent" resultType="recentVO" parameterType="String">
+  		select * from recent where user_id=#{user_id} and recent_code='parking'
+  	</select>
+  	
+  </mapper>

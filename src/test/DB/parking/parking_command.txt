@@ -1,0 +1,94 @@
+===== 3. ☆★☆★테스트용 parking_lots data insert =====
+insert into parking_loc values
+(
+'1040225',
+'논현로22길(구)',
+'강남구 개포동 1266-0',
+37.48150119,
+127.04781332,
+'NW',
+'노외 주차장',
+'1',
+'시간제 주차장',
+'02-576-1492'
+);
+
+insert into parking_loc values
+(
+'1010089',
+'초안산근린공원주차장(구)',
+'도봉구 창동 24-0',
+37.64927895,
+127.0404744
+,
+'NW',
+'노외 주차장',
+'1',
+'시간제 주차장',
+null
+);
+
+insert into parking_loc values
+(
+	'1012254',
+	'마들스타디움(근린공원)(구)',
+	'노원구 상계동 770-2',
+	37.64391748,
+	127.0585674,
+	'NW',
+	'노외 주차장',
+	'1',
+	'시간제 주차장',
+	'02-2289-6735'
+);
+commit;
+
+
+===== 2. csv를 이용해서 데이터 넣는 명령문 =====
+sqlldr userid=leggo/leggo control='F:\project1\db\parking_price.ctl' log='F:\project1\db\parking_price.log'
+sqlldr userid=leggo/leggo control='F:\project1\db\parking_seats.ctl' log='F:\project1\db\parking_seats.log'
+sqlldr userid=leggo/leggo control='F:\project1\db\parking_time.ctl' log='F:\project1\db\parking_time.log'
+sqlldr userid=leggo/leggo control='F:\project1\db\parkinglots.ctl' log='F:\project1\db\parkinglots.log'
+
+===== 1. 테이블 생성 =====
+create table parking_loc
+(
+parking_code varchar2(7) primary key
+,parking_name varchar2(100)
+,addr varchar2(200)
+,lat number(15,6)
+,lng number(15,6)
+,parking_type varchar2(3)
+,parking_type_nm varchar2(50)
+,operation_rule varchar2(3)
+,operation_rule_nm varchar2(100)
+,tel varchar2(15)
+);
+
+create table parking_seats
+(
+parking_code varchar2(7) references parking_lots (parking_code)
+,que_status varchar2(3)
+,que_status_nm varchar2(100)
+,capacity number(4)
+,cur_parking number(4)
+,cur_parking_time varchar2(50)
+);
+
+create table parking_time
+(
+parking_code varchar2(7) references parking_lots (parking_code)
+,night_free_open varchar2(3)
+,night_free_open_nm varchar2(60)
+,weekday_begin_time number(4)
+,weekday_end_time number(4)
+,weekend_begin_time number(4)
+,weekend_end_time number(4)
+,holiday_begin_time number(4)
+,holiday_end_time number(4)
+,sync_time varchar2(50)
+);
+
+
+한글 깨질경우
+https://jehna.tistory.com/36

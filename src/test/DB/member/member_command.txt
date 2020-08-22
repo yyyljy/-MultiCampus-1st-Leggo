@@ -1,0 +1,105 @@
+conn system/manager
+
+create user leggo identified by leggo;
+
+grant connect,resource to leggo;
+
+conn leggo/leggo;
+
+set linesize 300;
+
+set pagesize 300;
+
+create table member
+(
+user_id varchar2(20) primary key,
+pass varchar2(20) not null,
+pass_hint varchar2(60) not null,
+pass_ans varchar2(60) not null,
+user_name varchar2(30) not null,
+birth date not null,
+gender char(1) check(gender in ('M','F')),
+tel varchar2(15),
+mobile varchar2(15) not null,
+addr varchar2(180),
+postcode varchar2(10),
+email varchar2(50),
+recv_email char(1) check(recv_email in ('Y','N')),
+recv_text char(1) check(recv_text in ('Y','N')),
+reg_date date not null,
+lastlogin date
+);
+
+insert into member values(
+	'test1',
+	'test123',
+	'힌트힌트힌트',
+	'답변답변답변',
+	'김테스트',
+	sysdate,
+	'M',
+	'048405665',
+	'01012345678',
+	'역삼구 내집은 멀캠',
+	'99999',
+	'rnlcksgwlaks@duftlagl.com',
+	'Y',
+	'N',
+	sysdate,
+	sysdate
+);
+insert into member values(
+	'test2',
+	'test234',
+	'힌트힌트힌트',
+	'답변답변답변',
+	'이테스트',
+	sysdate,
+	'F',
+	'048405665',
+	'01012345678',
+	'서울인가 아니어도 멀캠',
+	'99999',
+	'tmftmf@whfflek.net',
+	'N',
+	'Y',
+	sysdate,
+	sysdate
+);
+insert into member values(
+	'test3',
+	'test345',
+	'힌트힌트힌트',
+	'답변답변답변',
+	'박테스트',
+	sysdate,
+	'M',
+	'048405665',
+	'01099995678',
+	'부산도 결국은 멀캠',
+	'99999',
+	'answnsdn@qntksdls.co.kr',
+	'Y',
+	'Y',
+	sysdate,
+	sysdate
+);
+insert into member values(
+	'test4',
+	'test456',
+	'힌트힌트힌트',
+	'답변답변답변',
+	'최테스트',
+	sysdate,
+	'F',
+	'048405665',
+	'01012345678',
+	'인천이라도 멀캠 가지말자',
+	'99999',
+	'dlrpek@antmsthdyd.com',
+	'N',
+	'N',
+	sysdate,
+	sysdate
+);
+commit;

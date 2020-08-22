@@ -1,0 +1,102 @@
+@charset "EUC-KR";
+/* 배경석 */
+		body{
+		  margin: 0;
+		  padding: 0;
+		  background: #fff;
+		}
+		#header{
+			padding-top: 80px;
+			text-align: center;
+		}
+		#bgImg{
+			height: 470px;
+			text-align: center;
+		}
+		h3{
+			font-family: 배달의민족 을지로체 TTF; /* 배달의민족 도현; */
+			font-size: 40px;
+			font-weight: bold;
+			color: black;
+		}
+		#text1{
+			font-family: 배달의민족 을지로체 TTF; /* 배달의민족 도현; */
+			font-size: 20px;
+			font-weight: bold;
+			color: black;
+		}
+		#projects{
+			/* background-color: red; */
+		}
+		#about{
+			/* background-color: red; */
+		}
+		/* 이미지 창 사이즈 */
+		.slidershow{
+		  width: 1100px;
+		  height: 500px;
+		  overflow: hidden;
+		}
+		/* 이미지창 위치 */
+		.middle{
+		  position: absolute;
+		  top: 38%;
+		  left: 50%;
+		  transform: translate(-50%,-50%);
+		}
+		/* 슬라이드 */
+		.navigation{
+		  position: absolute;
+		  bottom: 20px;
+		  left: 50%;
+		  transform: translateX(-50%);
+		  display: flex;
+		}
+		/* 버튼 */
+		.bar{
+		  width: 50px;
+		  height: 10px;
+		  border: 2px solid #fff;
+		  margin: 6px;
+		  cursor: pointer;
+		  transition: 0.3s;	
+		}
+		/* 눌렀을 때 색 바뀜 */
+		.bar:hover{
+		  background: #fff;
+		}
+		/* 다른 버튼 숨기기 */
+		input[name="r"]{
+		    position: absolute;
+		    visibility: hidden;
+		}
+		.slides{
+		  width: 500%;
+		  height: 100%;
+		  display: flex;
+		}
+		
+		.slide{
+		  width: 20%;
+		  transition: 0.6s;
+		}
+		.slide img{
+		  width: 100%;
+		  height: 100%;
+		}
+		
+		#r1:checked ~ .s1{
+		  margin-left: 0;
+		}
+		#r2:checked ~ .s1{
+		  margin-left: -20%;
+		}
+		#r3:checked ~ .s1{
+		  margin-left: -40%;
+		}
+		#r4:checked ~ .s1{
+		  margin-left: -60%;
+		}
+		#r5:checked ~ .s1{
+		  margin-left: -80%;
+		}

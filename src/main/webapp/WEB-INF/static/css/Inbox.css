@@ -1,0 +1,21 @@
+@charset "EUC-KR";
+	html,body,h1,h2,h3,h4,h5 {font-family: "RobotoDraft", "Roboto", sans-serif}
+	.w3-bar-block .w3-bar-item {padding: 16px}
+	
+	#sideLogo{
+		text-align: center;
+	}
+	a { 
+		text-decoration:none 
+	} 
+	#text, #myBtn{
+		background-color: #2F5597;
+		color: white;
+		border: 5px;
+		border-style: solid;
+		border-radius: 10px;
+	}
+	#line{
+		width: 950px;
+		height: 40px;
+			}

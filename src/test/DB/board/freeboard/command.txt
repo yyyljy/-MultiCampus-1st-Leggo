@@ -1,0 +1,55 @@
+ //게시판 타입 테이블
+ create table type(
+brd_type_num number(3) primary key,
+brd_type varchar2(50) not null
+);
+
+insert into type values
+(
+1,
+'freeboard'
+);
+ 
+ //자유게시판 테이블
+ create table freeboard(
+  brd_type_num number(3) references type (brd_type_num),
+  brd_num varchar2(10) primary key,
+  title varchar2(60) not null,
+  content varchar2(1000) not null,
+  update_date date,
+  user_id varchar2(20) references member(user_id),
+  img_path varchar2(60)
+  );
+  
+insert into freeboard values
+(
+1,
+'1',
+'자유자유',
+'내용자유게시판내용',
+sysdate,
+'test1',
+'?'
+);
+  
+ 이미지 테이블
+  create table img(
+ brd_type_num number(3) references type (brd_type_num),
+ brd_num varchar2(10) not null,
+ content_url varchar2(1000) not null
+ );
+  
+  
+  댓글 관련 클래스 생성필요
+ create table cmt(
+  brd_num varchar2(10) references freeboard (brd_num),
+  cmt_num number(7) primary key,
+  cmt_content varchar2(500) not null,
+  update_date date,
+  user_id varchar2(20) references member (user_id)
+  );
+  
+ 시퀸스
+ create sequence freeboard_seq;
+  
+  

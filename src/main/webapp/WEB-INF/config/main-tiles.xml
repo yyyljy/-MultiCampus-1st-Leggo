@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	<definition name="mainTemplate" template="/WEB-INF/layout/mainLayout.jsp">
+		<put-attribute name="top" value="/WEB-INF/include/top.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/include/menu.jsp" />
+		<put-attribute name="content" value="/WEB-INF/include/content.jsp" />
+	</definition>
+	
+	<definition name="newsTemplate" template="/WEB-INF/layout/newsLayout.jsp">
+		<put-attribute name="top" value="/WEB-INF/include/top.jsp" />
+		<put-attribute name="content" value="/WEB-INF/include/content.jsp" />
+	</definition>
+	
+	<definition name="introTemplate" template="/WEB-INF/layout/introLayout.jsp">
+		<put-attribute name="content" value="/WEB-INF/include/content.jsp" />
+	</definition>
+	
+	<definition name="testTemplate" template="/WEB-INF/layout/testLayout.jsp">
+		<put-attribute name="content" value="/WEB-INF/include/content.jsp" />
+	</definition>
+	
+	<definition name="userInfoTemplate" template="/WEB-INF/layout/myInfoLayout.jsp">
+		<put-attribute name="top" value="/WEB-INF/include/top.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/include/menu.jsp" />
+		<put-attribute name="content" value="/WEB-INF/include/content.jsp" />
+	</definition>
+
+	
+	<definition name="main" extends="mainTemplate"></definition>
+	<definition name="news" extends="newsTemplate"></definition>
+	<definition name="intro" extends="introTemplate"></definition>
+	<definition name="test" extends="testTemplate"></definition>
+	<definition name="userInfo" extends="userInfoTemplate"></definition>
+	
+	
+	
+</tiles-definitions>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.iot.pay">
+	  <insert id="payinsert" parameterType="payVO">
+	  insert into pay values(
+           pm_num_seq.nextVal,
+         '83',
+         #{user_id},
+         #{pm_method_code},
+         #{pm_price},
+         sysdate,
+         #{pm_price_plus},
+         #{use_point},
+         #{discount},
+         #{card_grant_num},
+         #{pm_confirm}
+        )<!-- 순서 변경 -->
+     </insert>
+        
+	  <delete id="delete" parameterType="payVO">
+	  	delete pay where pm_num = #{pm_num}
+	  </delete>
+	  
+	  <update id="update" parameterType="payVO">
+	  	update pay set
+			pm_price_plus = #{pm_price_plus},
+			pm_date = sysdate,
+			pm_confirm = #{pm_confirm}
+		where pm_num = #{pm_num}
+	  </update>
+	  
+	  <select id="select" parameterType="String" resultType="payVO">
+	  	select * from pay where user_id = #{user_id}
+	  </select>
+  </mapper>

@@ -1,0 +1,161 @@
+========전체 테이블 세팅==========
+===포함된 테이블 목록=============
+멤버, 포인트, 주차장 4개, 예약, 게시판(타입, 자유게시판, 공지사항, 이미지, 댓글), 즐겨찾기, 최근방문
+============================
+===포함된 시퀀스 목록=============
+예약번호, 자유게시판글번호, FAQ게시판글번호, 공지사항게시판글번호, 1:1문의게시판글번호
+=============================
+create table member
+(
+user_id varchar2(20) primary key,
+pass varchar2(20) not null,
+pass_hint varchar2(60) not null,
+pass_ans varchar2(60) not null,
+user_name varchar2(30) not null,
+birth date not null,
+gender char(1) check(gender in ('M','F')),
+tel varchar2(15),
+mobile varchar2(15) not null,
+addr varchar2(180),
+postcode varchar2(10),
+email varchar2(50),
+recv_email char(1) check(recv_email in ('Y','N')),
+recv_text char(1) check(recv_text in ('Y','N')),
+reg_date date not null,
+lastlogin date
+);
+
+create table userPoint
+(
+user_id varchar2(20) references member (user_id),
+pointAvail number(10) not null,
+pointChange number(10) not null,
+pointDate date not null,	
+pointExpDate date not null,
+userGrade varchar2(15) check( userGrade in('釉뚮줎利�','�떎踰�','怨⑤뱶','�뵆�옒�떚�꽆'))
+);
+
+create table parking_loc
+(
+parking_code varchar2(7) primary key
+,parking_name varchar2(100)
+,addr varchar2(200)
+,lat number(15,6)
+,lng number(15,6)
+,parking_type varchar2(3)
+,parking_type_nm varchar2(50)
+,operation_rule varchar2(3)
+,operation_rule_nm varchar2(100)
+,tel varchar2(15)
+);
+
+create table parking_seats
+(
+parking_code varchar2(7) references parking_loc (parking_code)
+,que_status varchar2(3)
+,que_status_nm varchar2(100)
+,capacity number(4)
+,cur_parking number(4)
+,cur_parking_time varchar2(50)
+);
+
+create table parking_time
+(
+parking_code varchar2(7) references parking_loc (parking_code)
+,weekday_begin_time number(4)
+,weekday_end_time number(4)
+,weekend_begin_time number(4)
+,weekend_end_time number(4)
+,holiday_begin_time number(4)
+,holiday_end_time number(4)
+,sync_time varchar2(50)
+);
+
+create table parking_price
+(
+parking_code varchar2(7) references parking_loc (parking_code),
+pay_yn varchar2(1),
+pay_nm varchar2(30),
+night_free_open varchar2(3),
+night_free_open_nm varchar2(60),
+Saturday_pay_yn varchar2(3),
+Saturday_pay_nm varchar2(30),
+holiday_pay_yn varchar2(3),
+holiday_pay_nm varchar2(30),
+monthly_pass number(15),
+rates number(15),
+time_rate number(15),
+add_rates number(15),
+add_time_rate number(15),
+bus_rates number(15),
+bus_add_rates number(15),
+bus_time_rate number(15),
+bus_add_time_rate number(15),
+day_max_rate number(15)
+);
+
+create table reservation
+(
+rv_id varchar2 (10) primary key,
+user_id varchar2 (20) references member (user_id),
+parking_code varchar2 (7) references parking_loc (parking_code),
+rv_price number (10) ,
+license_plate varchar2 (15) ,
+rv_code number (7) not null,
+rv_date date not null,
+rv_time date not null
+);
+
+create sequence rv_id_seq;
+
+create table type(
+brd_type_num number(3) primary key,
+brd_type varchar2(10) not null
+);
+
+create table freeboard(
+brd_type_num number(3) references type (brd_type_num),
+brd_num varchar2(10) primary key,
+title varchar2(60) not null,
+content varchar2(1000) not null,
+update_date date,
+user_id varchar2(20) not null,
+img_path varchar2(60)
+);
+
+create sequence freeboard_seq;
+
+//FAQ 테이블 생성 필요
+create sequence faqboard_seq;
+  
+create table noticeboard(
+notice_num number(7) primary key,
+title varchar2(60) not null,
+content varchar2(1000) not null,
+update_date date,
+mng_id varchar2(20) not null,
+img_path varchar2(60)
+);
+create sequence noticeboard_seq;
+  
+//1:1 테이블 생성 필요
+create sequence quesboard_seq;
+  
+create table img(
+brd_type_num number(3) references type (brd_type_num),
+brd_num varchar2(10) not null,
+content_url varchar2(1000) not null
+);
+
+create table cmt(
+brd_num varchar2(10) references freeboard (brd_num),
+cmt_num number(7) primary key,
+cmt_content varchar2(500) not null,
+update_date date,
+user_id varchar2(20) references member (user_id)
+);
+
+
+
+
+
